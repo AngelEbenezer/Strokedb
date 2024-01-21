@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Symptom Checker</title>
+</head>
+<body>
+    <h1>Stroke Symptom Checker</h1>
+    <label for="symptoms">Enter symptoms (comma-separated):</label>
+    <input type="text" id="symptoms">
+    <button onclick="checkSymptoms()">Check Symptoms</button>
+    <p id="result"></p>
+
+    <script>
+        function checkSymptoms() {
+            // Get user input
+            const symptomsInput = document.getElementById('symptoms').value;
+
+            // Convert input to lowercase for case-insensitivity
+            const symptoms = symptomsInput.toLowerCase().split(',');
+
+            // Check for stroke based on simplified criteria (for educational purposes only)
+            const hasSpeechDifficulty = symptoms.includes('speech difficulty');
+            const hasWeakness = symptoms.includes('weakness');
+            const hasNumbness = symptoms.includes('numbness');
+            const hasHeadache = symptoms.includes('headache');
+
+            // Determine the result
+            let result = "Cannot determine based on input.";
+            if (hasSpeechDifficulty && (hasWeakness || hasNumbness) && hasHeadache) {
+                result = "Possibility of a stroke. Seek medical attention immediately!";
+            } else {
+                result = "Unlikely to be a stroke, but consult a healthcare professional for accurate diagnosis.";
+            }
+
+            // Display the result
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+</body>
+</html>

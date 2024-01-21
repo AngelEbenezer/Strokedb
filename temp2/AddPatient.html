@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Marks</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Marcellus SC">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /*background-color:  midnightblue;*/
+            background-color:  rgb(255, 255, 255);
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: inline-block;
+            color: rgb(3, 3, 3);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-family:'Trebuchet MS' 
+        }
+
+        li a:hover {
+            background-color: rgb(111, 196, 184);
+        }
+        h2 {
+            text-align: center;
+            font-family: 'Helvetica';
+            margin-top: 40px;
+            color: Black;
+        }
+    </style>
+    
+</head>
+<body>
+<div style="padding-left: 26px; margin: -8px;background-color:rgb(171, 164, 232);font-weight: bold; color: darkslategrey;">
+        <ul style="color: rgb(65, 6, 6);list-style-type:none;background-color:pink;display:inline-block">
+             <li><a href="{{ url_for('MyHome')}}" class="active"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="{{ url_for('InsertPatient')}}">Add Patient</a></li>
+            <li><a href="{{ url_for('ViewStudent')}}"> View Patient</a></li>
+            <li><a href="{{ url_for('MarksData')}}"> Enter Symptoms</a></li>
+            
+           
+        </ul>
+    </div>
+    <h1>Add Patient Details</h1>
+    <form id="patientForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required><br>
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" required><br>
+
+        <label for="diagnosis">Diagnosis:</label>
+        <input type="text" id="diagnosis" required><br>
+
+        <button type="button" onclick="addPatient()">Add Patient</button>
+    </form>
+
+    <script>
+        function addPatient() {
+            // Retrieve input values
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var diagnosis = document.getElementById('diagnosis').value;
+
+            // Create a patient object
+            var patient = {
+                name: name,
+                age: age,
+                gender: gender,
+                diagnosis: diagnosis
+            };
+
+            // Send the patient data to the server (backend)
+            // This is where you would typically make an AJAX request or use a fetch API
+            // to send the data to the server for processing and database insertion.
+            // Example: fetch('/api/addPatient', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(patient),
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log('Success:', data);
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            // });
+
+            // For demonstration purposes, log the patient object to the console
+            console.log('Patient Details:', patient);
+
+            // You would typically handle the server response here and provide appropriate user feedback
+            alert('Patient details added successfully.');
+
+            // Clear the form
+            document.getElementById('patientForm').reset();
+        }
+    </script>
+    
+                              
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </body>
+</html>
